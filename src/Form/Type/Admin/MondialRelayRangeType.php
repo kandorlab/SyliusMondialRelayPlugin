@@ -4,7 +4,7 @@ namespace Sherlockode\SyliusMondialRelayPlugin\Form\Type\Admin;
 
 use Sylius\Bundle\MoneyBundle\Form\Type\MoneyType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
@@ -18,14 +18,14 @@ class MondialRelayRangeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('minWeight', IntegerType::class, [
+            ->add('minWeight', NumberType::class, [
                 'label' => 'sylius.form.shipping_calculator.mondial_relay.min_weight',
                 'required' => false,
                 'constraints' => [
                     new GreaterThanOrEqual(['value' => 0, 'groups' => ['sylius']]),
                 ]
             ])
-            ->add('maxWeight', IntegerType::class, [
+            ->add('maxWeight', NumberType::class, [
                 'label' => 'sylius.form.shipping_calculator.mondial_relay.max_weight',
                 'required' => false,
                 'constraints' => [
